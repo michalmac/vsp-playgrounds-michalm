@@ -21,7 +21,8 @@ package playground.michalm.audiAV.flowPaper;
 
 import java.util.*;
 
-import org.matsim.contrib.util.*;
+import org.matsim.contrib.common.csv.CSVReaders;
+import org.matsim.contrib.common.csv.CompactCSVWriter;
 import org.matsim.core.utils.io.IOUtils;
 
 public class TravelTimeAnalysisExtractor {

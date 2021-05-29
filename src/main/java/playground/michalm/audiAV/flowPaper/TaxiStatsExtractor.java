@@ -22,7 +22,7 @@ package playground.michalm.audiAV.flowPaper;
 import java.util.Arrays;
 
 import org.matsim.contrib.taxi.util.stats.TaxiStatsReader;
-import org.matsim.contrib.util.CompactCSVWriter;
+import org.matsim.contrib.common.csv.CompactCSVWriter;
 import org.matsim.core.utils.io.IOUtils;
 
 public class TaxiStatsExtractor {

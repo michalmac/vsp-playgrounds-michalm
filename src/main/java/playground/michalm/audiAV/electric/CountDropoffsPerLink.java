@@ -26,7 +26,7 @@ import org.apache.commons.lang3.mutable.MutableInt;
 import org.matsim.api.core.v01.*;
 import org.matsim.api.core.v01.network.Link;
 import org.matsim.api.core.v01.population.*;
-import org.matsim.contrib.util.CompactCSVWriter;
+import org.matsim.contrib.common.csv.CompactCSVWriter;
 import org.matsim.core.config.*;
 import org.matsim.core.network.io.MatsimNetworkReader;
 import org.matsim.core.population.io.PopulationReader;
