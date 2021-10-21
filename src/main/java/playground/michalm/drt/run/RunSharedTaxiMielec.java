@@ -32,27 +32,13 @@ import org.matsim.vis.otfvis.OTFVisConfigGroup;
 
 public class RunSharedTaxiMielec {
 	public static void main(String[] args) {
-		String configFile = "mielec_2014_02/mielec_drt_config.xml";
+		String configFile = "scenarios/mielec_2014_02/mielec_drt_config.xml";
 		RunSharedTaxiMielec.run(configFile, false);
 	}
 
 	public static void run(String configFile, boolean otfvis) {
 		Config config = ConfigUtils.loadConfig(configFile, new DvrpConfigGroup(), new MultiModeDrtConfigGroup(),
 				new OTFVisConfigGroup());
-
-		DrtConfigGroup drtCfg = DrtConfigGroup.getSingleModeDrtConfig(config);
-		// drtCfg.setMaxWaitTime(maxWaitTime);
-
-		DrtZonalSystemParams zonalSystemParams = drtCfg.getZonalSystemParams().get();
-		zonalSystemParams.setCellSize(500.0);
-		zonalSystemParams.setZonesGeneration(DrtZonalSystemParams.ZoneGeneration.GridFromNetwork);
-
-		RebalancingParams rebalancingParams = drtCfg.getRebalancingParams().get();
-		rebalancingParams.setInterval(600);
-
-		config.controler().setLastIteration(1);
-		config.controler().setWriteEventsInterval(1);
-		config.controler().setOutputDirectory("d:/temp/mielec-rebalancing/zone_0500_target_a_50_b_00");
 
 		Controler controler = DrtControlerCreator.createControler(config, otfvis);
 
