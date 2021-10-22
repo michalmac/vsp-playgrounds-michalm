@@ -70,7 +70,7 @@ public class DvrpTravelTimeMatrixSpeedTest {
 		DvrpTravelTimeMatrixParams params = new DvrpTravelTimeMatrixParams();
 		params.setCellSize(200);
 
-		new DvrpTravelTimeMatrix(carNetwork, params, 12);
+		new DvrpTravelTimeMatrix(carNetwork, params, 12, 1);
 
 	}
 }
