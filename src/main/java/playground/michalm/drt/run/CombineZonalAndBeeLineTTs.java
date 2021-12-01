@@ -59,7 +59,7 @@ public class CombineZonalAndBeeLineTTs {
 
 		int numberOfThreads = 12;// Runtime.getRuntime().availableProcessors();
 
-		var dvrpTTMatrix = new DvrpTravelTimeMatrix(network, matrixParams, numberOfThreads, 1);
+		var dvrpTTMatrix = DvrpTravelTimeMatrix.createFreeSpeedMatrix(network, matrixParams, numberOfThreads, 1);
 
 		Counter counter = new Counter("DVRP free-speed trees: node ", " / " + network.getNodes().size());
 
