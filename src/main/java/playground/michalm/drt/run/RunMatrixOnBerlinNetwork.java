@@ -37,7 +37,7 @@ public class RunMatrixOnBerlinNetwork {
 	public static void main(String[] args) {
 		String networkFile = "d:/matsim-repos/shared-svn/projects/audi_av/scenario/network_reduced_cleaned.xml.gz";
 		//String networkFile = "d:/matsim-intelliJ/matsim-maas/scenarios/mielec_2014_02/network.xml";
-		var dvrpNetwork = NetworkUtils.readTimeInvariantNetwork(networkFile);
+		var dvrpNetwork = NetworkUtils.readNetwork(networkFile);
 
 		var matrixParams = new DvrpTravelTimeMatrixParams();
 		matrixParams.setMaxNeighborDistance(4000);
