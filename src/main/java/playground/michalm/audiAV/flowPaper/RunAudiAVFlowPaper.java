@@ -46,7 +46,9 @@ public class RunAudiAVFlowPaper {
 			public void install() {
 				bind(TravelTime.class).annotatedWith(Names.named(DvrpTravelTimeModule.DVRP_INITIAL))
 						.toInstance(initialTT);
-				install(new AvIncreasedCapacityModule(flowEfficiencyFactor));
+				MultiModeTaxiConfigGroup.get(config)
+						.modes()
+						.forEach(mode -> install(new AvIncreasedCapacityModule(mode, flowEfficiencyFactor)));
 			}
 		});
 
