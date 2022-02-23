@@ -24,8 +24,8 @@ import java.net.MalformedURLException;
 import java.util.Set;
 
 import org.matsim.api.core.v01.network.Network;
-import org.matsim.contrib.zone.skims.DvrpTravelTimeMatrix;
 import org.matsim.contrib.zone.skims.DvrpTravelTimeMatrixParams;
+import org.matsim.contrib.zone.skims.FreeSpeedTravelTimeMatrix;
 import org.matsim.core.network.NetworkUtils;
 import org.matsim.core.network.algorithms.TransportModeNetworkFilter;
 import org.matsim.core.network.io.MatsimNetworkReader;
@@ -70,6 +70,6 @@ public class DvrpTravelTimeMatrixSpeedTest {
 		DvrpTravelTimeMatrixParams params = new DvrpTravelTimeMatrixParams();
 		params.setCellSize(200);
 
-		DvrpTravelTimeMatrix.createFreeSpeedMatrix(carNetwork, params, 12, 1);
+		FreeSpeedTravelTimeMatrix.createFreeSpeedMatrix(carNetwork, params, 12, 1);
 	}
 }

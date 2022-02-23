@@ -33,7 +33,8 @@ import org.matsim.contrib.common.util.DistanceUtils;
 import org.matsim.contrib.dvrp.router.TimeAsTravelDisutility;
 import org.matsim.contrib.dvrp.trafficmonitoring.QSimFreeSpeedTravelTime;
 import org.matsim.contrib.util.ExecutorServiceWithResource;
-import org.matsim.contrib.zone.skims.DvrpTravelTimeMatrix;
+import org.matsim.contrib.zone.skims.FreeSpeedTravelTimeMatrix;
+import org.matsim.contrib.zone.skims.TravelTimeMatrix;
 import org.matsim.contrib.zone.skims.DvrpTravelTimeMatrixParams;
 import org.matsim.core.network.NetworkUtils;
 import org.matsim.core.router.speedy.LeastCostPathTree;
@@ -59,7 +60,7 @@ public class CombineZonalAndBeeLineTTs {
 
 		int numberOfThreads = 12;// Runtime.getRuntime().availableProcessors();
 
-		var dvrpTTMatrix = DvrpTravelTimeMatrix.createFreeSpeedMatrix(network, matrixParams, numberOfThreads, 1);
+		var dvrpTTMatrix = FreeSpeedTravelTimeMatrix.createFreeSpeedMatrix(network, matrixParams, numberOfThreads, 1);
 
 		Counter counter = new Counter("DVRP free-speed trees: node ", " / " + network.getNodes().size());
 
@@ -118,7 +119,7 @@ public class CombineZonalAndBeeLineTTs {
 		}
 	}
 
-	record Context(Network network, double departureTime, Counter counter, DvrpTravelTimeMatrix travelTimeMatrix,
+	record Context(Network network, double departureTime, Counter counter, TravelTimeMatrix travelTimeMatrix,
 				   AllStats allStatsAccumulator) {
 	}
 
@@ -225,10 +226,10 @@ public class CombineZonalAndBeeLineTTs {
 			double currTime = currOptionalTime.seconds();
 			double networkTT = currTime - context.departureTime;
 			// FIXME make it zonal only (now this call is computing the hybrid distance)
-			double zonalTT = context.travelTimeMatrix.getFreeSpeedTravelTime(fromNode, toNode);
+			double zonalTT = context.travelTimeMatrix.getTravelTime(fromNode, toNode, 0);
 			double networkDistance = lcpTree.getDistance(nodeIndex);
 			double beelineDistance = DistanceUtils.calculateDistance(fromNode, toNode);
-			double hybridTT = context.travelTimeMatrix.getFreeSpeedTravelTime(fromNode, toNode);
+			double hybridTT = context.travelTimeMatrix.getTravelTime(fromNode, toNode, 0);
 
 			if (zonalTT != hybridTT && hybridTT != networkTT && networkDistance < 1000) {
 				System.out.println();
