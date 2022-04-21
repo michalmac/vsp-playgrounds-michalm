@@ -6,7 +6,7 @@
 	<version>master-SNAPSHOT</version>
 
 	<properties>
-		<matsim.version>14.0-SNAPSHOT</matsim.version>
+		<matsim.version>15.0-SNAPSHOT</matsim.version>
 	</properties>
 
 
